@@ -19,15 +19,22 @@
 }
 
 body {
-    background-color: var(--primary-color);
-    color: var(--text-color);
+     background-color: var(--primary-color);
+    color: var(--text-color); 
 }
 
 .header, .typing-area {
     color: var(--text-color);
+    /* padding-left:5px;
+    padding-right: 5px; */
 }
 
-.header .chat-list .message .typing-form{
+.header .typing-form{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.chat-list .message.outgoing .message.incoming .message.incoming.loading {
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -204,14 +211,20 @@ body {
 .chat-list .message .message-content {
  display: flex; 
  align-items: center;
+ justify-content: center;
  gap: 1.5rem;
  width: 100%;
+ /* position: relative;
+ left: 2.2rem; */
 }
 
 .chat-list .message .text{
   color: var(--text-color);
 }
 
+.chat-list .message.loading .text {
+    display: none;
+}
 .chat-list .message.incoming{
     margin-top: 1.5rem;
 }
@@ -222,3 +235,74 @@ body {
     overflow-y: auto;
 
 }
+
+.chat-list .message .copy{
+    color: var(--text-color);
+    height:35px;
+    width: 35px;
+    font-size: 1.25rem;
+    margin-left: 3.5rem;
+    background: var(--secondary-color);
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.chat-list .message:not(.loading):hover .copy{
+   visibility:visible;
+}
+
+.chat-list .message .copy:hover {
+    background: var(--secondary-color);
+    /* transition: transform 0.2s ease; */
+}
+
+.chat-list .loading-indicator {
+    dispaly: flex;
+    width:100%;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+ 
+/* animations........ */
+
+.chat-list .loading-indicator .loading-bar{
+    height: 11px;
+    width: 100%;
+    border-radius: 0.14rem;
+    background: linear-gradient(to right, #4285f4, var(--primary-color), #4285f4 );
+    margin-bottom: 0.8rem;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        background-position: -800px 0;
+    }
+
+    100%{
+        background-position: 800px 0;
+    }
+}
+
+.chat-list .loading-indicator .loading-bar:last-child {
+    width: 70%;
+}
+
+/* rotate img while loading.....  */
+
+.chat-list .message.loading .image{
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    100%{
+       transform: rotate(360deg);
+    }
+}
+
+
+
