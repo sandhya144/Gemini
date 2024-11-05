@@ -5,11 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let userMessage = null;
 
-    // API Configuration
-    const API_KEY = "AIzaSyAdVb_xHyCRpKG_D2FCDO_2us8pUQpwrek";
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+    // // API Configuration
+    // const API_KEY = "AIzaSyB4m0szj8MNGExCWflKaOvUj5A-EtsdgAk";
+    // const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-    // Create a new message element and return it
+
+    // Create a new message element and return it..
     const createMessageElement = (content, ...classes) => {
         const div = document.createElement("div");
         div.classList.add("message", ...classes);
@@ -17,42 +18,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return div;
     };
 
-    //Fetch response from the API based on user message
-    const generateAPIResponse = async (incomingMessageDiv) => {
-        const textElement = incomingMessageDiv.querySelector(".text"); // get text element
-        // send a post request to the API with the user's message
-        try {
-            console.log("User Message:", userMessage); // Log userMessage to console
-            const requestBody = JSON.stringify({
-                prompt: userMessage // Adjusted payload structure
-            });
-            console.log("Request Payload:", requestBody); // Log request payload
+    // //Fetch response from the API based on user message
+    // const generateAPIResponse = async (incomingMessageDiv) => {
+    //     const response = await fetch(API_URL, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             "prompt": userMessage,
+    //             "max_tokens": 50,
+    //             "temperature": 0.5,
+    //             "top_p": 1,
+    //             "frequency_penalty": 0,
+    //             "presence_penalty": 0,
+    //         }),
+    //     });
 
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: requestBody
-            });
+    //     const data = await response.json();
+    //     const generatedText = data.choices[0].text.trim();
 
-            if (!response.ok) {
-                const errorText = await response.text(); // Get full error response
-                throw new Error(`API Error: ${response.status} ${response.statusText} - ${errorText}`);
-            }
+    //     incomingMessageDiv.querySelector(".text").innerText = generatedText;
+    //     incomingMessageDiv.classList.remove("loading");
+    // }
+    // generateAPIResponse();
 
-            const data = await response.json();
-            console.log("API Response:", data);
-
-            const apiResponse = data?.candidates?.[0]?.text || "No valid response from API"; // Access the response safely
-            textElement.innerText = apiResponse;
-        } catch (error) {
-            console.error("Error fetching API response:", error);
-            textElement.innerText = "Error generating response.";
-        } finally {
-            incomingMessageDiv.classList.remove("loading");
-        }
-    };
 
     // Showing loading animations while waiting for the API response...
     const showLoadingAnimation = () => {
@@ -70,13 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const incomingMessageDiv = createMessageElement(html, "incoming", "loading");
         chatList.appendChild(incomingMessageDiv); // creating an element of outgoing message and adding it to chat list...
 
-        generateAPIResponse(incomingMessageDiv);
-    };
+        // generateAPIResponse(incomingMessageDiv);
+     };
     
     // Handle sending outgoing chat message
     const handleOutgoingChat = () => {
         userMessage = typingForm.querySelector(".typing-input").value.trim();
         if (!userMessage) return; // Exit if there is no message
+        console.log(userMessage);
 
         const html = `<div class="message-content">
             <img src="https://static.vecteezy.com/system/resources/previews/007/069/364/original/3d-user-icon-in-a-minimalistic-style-user-symbol-for-your-website-design-logo-app-ui-vector.jpg" alt="user img" class="image" style="width: 40px; height: 40px">
@@ -95,22 +86,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Prevent default form submission and handle outgoing chat
     typingForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
         handleOutgoingChat();
     });
 
-    // Handle copying message content to clipboard
-    if (chatList) {
-        chatList.addEventListener("click", (e) => {
-            if (e.target.classList.contains("copy")) {
-                const messageContent = e.target.previousElementSibling.querySelector(".text").innerText;
-                navigator.clipboard.writeText(messageContent).then(() => {
-                    alert("Message copied to clipboard!");
-                }).catch(err => {
-                    console.error("Failed to copy text: ", err);
-                });
-            }
-        });
-    }
+    // // Handle copying message content to clipboard
+    // if (chatList) {
+    //     chatList.addEventListener("click", (e) => {
+    //         if (e.target.classList.contains("copy")) {
+    //             const messageContent = e.target.previousElementSibling.querySelector(".text").innerText;
+    //             navigator.clipboard.writeText(messageContent).then(() => {
+    //                 alert("Message copied to clipboard!");
+    //             }).catch(err => {
+    //                 console.error("Failed to copy text: ", err);
+    //             });
+    //         }
+    //     });
+    // }
 });
+
+
+
+
 
 
