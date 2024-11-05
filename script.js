@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let userMessage = null;
 
-    // // API Configuration
-    // const API_KEY = "AIzaSyB4m0szj8MNGExCWflKaOvUj5A-EtsdgAk";
-    // const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+    // API Configuration
+    const API_KEY = "AIzaSyC2xOUHd_L3K05HqzXFaBNso9VcQgGocHg";
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
 
     // Create a new message element and return it..
@@ -43,6 +43,44 @@ document.addEventListener("DOMContentLoaded", () => {
     // }
     // generateAPIResponse();
 
+    // Fetch response from the API based on user message
+    const generateAPIResponse = async (incomingMessageDiv) => {
+    const textElement = incomingMessageDiv.querySelector(".text"); // Getting text element
+  
+    try {
+      // Send a POST request to the API with the user's message
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            contents: [{ 
+            role: "user", 
+            parts: [{ text: userMessage }] 
+          }] 
+        }),
+      });
+  
+      const data = await response.json();
+      console.log(data); // Log the API response data
+
+    //   if (!response.ok) throw new Error(data.error.message);
+  
+    //   // Get the API response text and remove asterisks from it
+    //   const apiResponse = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
+    //   showTypingEffect(apiResponse, textElement, incomingMessageDiv); // Show typing effect
+
+    
+    } catch (error) { // Handle error
+      console.log(error);
+    //   isResponseGenerating = false;
+    //   textElement.innerText = error.message;
+    //   textElement.parentElement.closest(".message").classList.add("error");
+    // } finally {
+    //   incomingMessageDiv.classList.remove("loading");
+    }
+  }
+  
+
 
     // Showing loading animations while waiting for the API response...
     const showLoadingAnimation = () => {
@@ -60,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const incomingMessageDiv = createMessageElement(html, "incoming", "loading");
         chatList.appendChild(incomingMessageDiv); // creating an element of outgoing message and adding it to chat list...
 
-        // generateAPIResponse(incomingMessageDiv);
+        generateAPIResponse(incomingMessageDiv);
      };
     
     // Handle sending outgoing chat message
@@ -104,9 +142,4 @@ document.addEventListener("DOMContentLoaded", () => {
     //     });
     // }
 });
-
-
-
-
-
 
