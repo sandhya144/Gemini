@@ -61,12 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   
       const data = await response.json();
-      console.log(data); // Log the API response data
+      // console.log(data); // Log the API response data
 
-    //   if (!response.ok) throw new Error(data.error.message);
+      // if (!response.ok) throw new Error(data.error.message);
   
-    //   // Get the API response text and remove asterisks from it
-    //   const apiResponse = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
+      // Get the API response text and remove asterisks from it
+      const apiResponse = data?.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
+      // console.log(apiResponse);
+      textElement.innerText = apiResponse; // Set the API response text to the text element
+
     //   showTypingEffect(apiResponse, textElement, incomingMessageDiv); // Show typing effect
 
     
@@ -75,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //   isResponseGenerating = false;
     //   textElement.innerText = error.message;
     //   textElement.parentElement.closest(".message").classList.add("error");
-    // } finally {
-    //   incomingMessageDiv.classList.remove("loading");
+    } finally {
+      incomingMessageDiv.classList.remove("loading");
     }
   }
   
