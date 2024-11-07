@@ -281,15 +281,19 @@ body {
 
 
 .chat-list .loading-indicator {
-    dispaly: none;
+    display: none; 
     width: 100%;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.2rem;
 }
- 
-.chat-list .message .loading-indicator{
-    display: flex;
 
+/* Show loading indicator only when message has loading class */
+.chat-list .message.loading .loading-indicator {
+    display: flex; /* Show loading indicator during loading */
+}
+
+.chat-list .message:not(.loading) .loading-indicator {
+    display: none; /* Hide loading indicator when loading is complete */
 }
 
 /* animations........ */
@@ -328,52 +332,6 @@ body {
        transform: rotate(360deg);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Responsive media query code for small screen */
 @media (max-width: 768px) {
