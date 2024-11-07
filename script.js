@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const API_KEY = "AIzaSyC2xOUHd_L3K05HqzXFaBNso9VcQgGocHg";
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
+
   // Create a new message element and return it..
   const createMessageElement = (content, ...classes) => {
       const div = document.createElement("div");
@@ -135,11 +136,80 @@ const copyMessage = (copyButton) => {
       chatList.appendChild(outgoingMessageDiv);
 
       typingForm.reset();
-      setTimeout(showLoadingAnimation, 500);
+      document.body.classList.add("hide-header");
+      setTimeout(showLoadingAnimation, 500);  // Show loading animation after a delay
   };
 
+
+  // Select the form and the submit button
+const form = document.querySelector(".typing-form");
+const submitButton = form.querySelector(".fa-arrow-up-from-bracket");
+
+// JavaScript to toggle the theme between light and dark mode
+const themeToggleButton = document.getElementById('themeToggleButton');
+const body = document.body;
+
+// Check if there's a saved theme preference in localStorage
+const savedTheme = localStorage.getItem('theme');
+
+// Apply the theme based on the saved preference or default to dark mode
+if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    themeToggleButton.innerHTML = '<i class="fas fa-moon"></i>'; // Sun icon for light mode
+} else {
+    body.classList.add('dark-mode');
+    themeToggleButton.innerHTML = '<i class="fas fa-sun"></i>'; // Moon icon for dark mode
+}
+
+// Add event listener to toggle the theme
+themeToggleButton.addEventListener('click', () => {
+    // Toggle between light and dark mode classes
+    body.classList.toggle('light-mode');
+    body.classList.toggle('dark-mode');
+
+    // Toggle the icon based on the theme
+    if (body.classList.contains('light-mode')) {
+        themeToggleButton.innerHTML = '<i class="fas fa-moon"></i>'; // Moon icon for dark mode
+        localStorage.setItem('theme', 'light'); // Save light mode to localStorage
+    } else {
+        themeToggleButton.innerHTML = '<i class="fas fa-sun"></i>'; // Sun icon for light mode
+        localStorage.setItem('theme', 'dark'); // Save dark mode to localStorage
+    }
+});
+
+
+// Delete Button Functionality
+const deleteButton = document.getElementById("deleteButton");
+
+deleteButton.addEventListener("click", (event) => {
+    // Prevent form submission
+    event.preventDefault();
+
+    // Clear all chat messages
+    const chatList = document.querySelector(".chat-list");
+    chatList.innerHTML = "";
+});
+
+
+
+// Form Submission for Sending Message
+form.addEventListener("submit", (event) => {
+    // Only send message if the submit button was clicked
+    if (event.submitter === submitButton) {
+        event.preventDefault(); // Prevent default submission
+        // Add your message-sending logic here
+        console.log("Message sent!");
+    } else {
+        // Prevent submission for other buttons
+        event.preventDefault();
+    }
+});
+
+// Prevent default form submission and handle outgoing chat
   typingForm.addEventListener("submit", (e) => {
       e.preventDefault();
       handleOutgoingChat();
   });
 });
+
+

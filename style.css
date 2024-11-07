@@ -8,20 +8,40 @@
     padding: 0px;
 }
 
+/* Default Dark Mode Styles */
 :root {
-    /* dark mode colors */
-    --text-color: #E3E3E3;
-    --subheading-color: #828282;
-    --primary-color: #242424;
-    --placeholder-color: #A6A6A6;
-    --secondary-color: #383838;
-    --secondary-hover-color: #444;
+    --primary-color: #121212;  /* Dark Background */
+    --secondary-color: #1e1e1e; /* Dark secondary background */
+    --text-color: #f5f5f5; /* Light text color */
+    --subheading-color: #dcdcdc; /* Light subheading color */
+    --secondary-hover-color: #333; /* Hover color for dark mode */
+    --placeholder-color: #888;
 }
 
-body {
-     background-color: var(--primary-color);
-    color: var(--text-color); 
+/* Light Mode Styles */
+body.light-mode {
+    --primary-color: #ffffff;  /* Light Background */
+    --secondary-color: #f9f9f9; /* Light secondary background */
+    --text-color: #333; /* Dark text color */
+    --subheading-color: #666; /* Dark subheading color */
+    --secondary-hover-color: #ddd; /* Hover color for light mode */
+    --placeholder-color: #111;    /* Dark black placeholder color */
+    --button-color: #111; /* Dark black color for buttons */
+    --button-hover-color: #222; /* Slightly lighter black for button hover */
+    --input-background: #111; /* Dark black background for input */
+    --input-text-color: #f5f5f5; /* Light text color for input */
 }
+
+/* Body styling for both modes */
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+body.hide-header .header {
+    margin: 0;
+    display: none;
+  }
 
 .header, .typing-area {
     color: var(--text-color);
@@ -54,8 +74,10 @@ body {
 .header{
     margin-top: 7vh;
     padding: 1rem;
-    display: none;
+    /* display: none; */
 }
+
+
 
 .header :where(.title, .subtitle){
     font-weight: 450;
@@ -129,9 +151,19 @@ body {
     position: fixed;
     width: 100%;
     bottom: 0;
-    padding: 1rem;
+    padding: 10px;
     background: var(--primary-color);
 }
+
+/* Placeholder Text */
+.typing-input::placeholder {
+    color: var(--placeholder-color); /* Dark placeholder color */
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
 
 .typing-area :where(.typing-form, .icon3){
     display:flex;
@@ -144,6 +176,8 @@ body {
 }
 
 .typing-area .input-wrapper {
+    display: flex;
+    align-items: center;
     height: 56px;
     width: 100%;
     display: flex;
@@ -151,6 +185,7 @@ body {
 }
 
 .typing-area .typing-input{
+    flex: 1; /* Makes the input field take the available space */
     width: 100%;
     height: 100%;
     border:none;
@@ -160,6 +195,7 @@ body {
     border-radius: 6.2rem;
     padding: 1.1rem 4rem 1.1rem 1.5rem;
     background: var(--secondary-color);
+
 }
 
 .typing-area .typing-input:focus {
@@ -172,10 +208,18 @@ body {
 
 .icon3 {
     font-size: 20px; 
+    margin-left: 0.5rem; /* Add space between icons */
+    background: var(--secondary-color);
+    color: var(--primary-color); /* Or any color that fits */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
 
 .typing-area .icon3 {
+    font-size: 20px;
     background: var(--secondary-color);
     height:50px;
     width: 50px;
@@ -185,9 +229,10 @@ body {
     border-radius: 50%;
     border: none;
     transform: scale(0.9);  
+    /* visibility: hidden; Hide by default */
 }
 
-.typing-area .input-wrapper .icon3 {
+.typing-area .input-wrapper.icon3 {
     position: absolute;
     right: 0;
     outline:none;
@@ -200,11 +245,13 @@ body {
 
 .typing-area .input-wrapper .typing-input:valid ~ .icon3 {
     transform: scale(1);
+    visibility: visible;
 }
 
 .typing-area .icon3:hover {
     background: var(--secondary-hover-color)!important;
 }
+
 
 .typing-area .disclaimer-text {
     font-size: 0.85rem;
@@ -212,6 +259,104 @@ body {
     text-align: center;
     color: var(--text-color);
 }
+
+/* Theme toggle and delete buttons in light mode */
+body.light-mode .theme-toggle,
+body.light-mode .delete-button,
+body.light-mode .fa-arrow-up-from-bracket  {
+    background: var(--button-color);
+    /* color: #333;  Darker text for better contrast in light mode */
+    color: var(--primary-color);  
+}
+
+body.light-mode .theme-toggle:hover,
+body.light-mode .delete-button:hover, 
+body.light-mode .fa-arrow-up-from-bracket:hover {
+    /* background: var(--secondary-hover-color); */
+    background: var(--button-hover-color);
+}
+
+/* Icon color changes for light/dark mode */
+/* body.light-mode .theme-toggle i { */
+    /* color: #333; Darker icon color for light mode */
+/* } */
+
+/* Icon color changes for light/dark mode */
+body.light-mode .theme-toggle i,
+body.light-mode #themeToggleButton i,
+body.light-mode #deleteButton i,
+body.light-mode .fa-arrow-up-from-bracket {
+    /* color: #333;                           Darker icon color for light mode */
+    color: var(--text-color);
+}
+
+body.dark-mode .theme-toggle i {
+    color: #f0f0f0; /* Lighter icon color for dark mode */
+}
+
+/* Set color for the buttons' icon and hover state */
+#themeToggleButton i,
+#deleteButton i,
+.fa-arrow-up-from-bracket {
+    color: rgba(0, 0, 0, 0.7); /* Adjusted for light mode to be visible */
+}
+
+#themeToggleButton,
+#deleteButton,
+.fa-arrow-up-from-bracket {
+     /* background-color: rgba(255,255,255, 0.5); More visible background */
+    background: var(--secondary-color);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+#themeToggleButton:hover,
+#deleteButton:hover,
+.fa-arrow-up-from-bracket:hover {
+    /* background-color: rgba(255,255,255,0.7); Hover effect for visibility */
+    background-color: var(--secondary-hover-color); /* Hover effect */
+}
+
+
+/* Hover effect for icons */
+.icon3:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+/* Ensure button color in light mode */
+body.light-mode .theme-toggle, 
+body.light-mode .delete-button, 
+body.light-mode .icon3 {
+    background: var(--button-color); /* Button color for light mode */
+    color: var(--primary-color); /* Text/icon color */
+}
+
+/* Icon color in light mode */
+body.light-mode #themeToggleButton i,
+body.light-mode #deleteButton i,
+body.light-mode .fa-arrow-up-from-bracket {
+    color: var(--text-color); /* Light mode text color */
+}
+
+/* Adjusting the button's hover effect */
+body.light-mode .theme-toggle:hover, 
+body.light-mode .delete-button:hover, 
+body.light-mode .icon3:hover {
+    background: var(--button-hover-color); /* Adjust hover for light mode */
+}
+
+
+/* Light Mode: Set arrow button background color to transparent */
+body.light-mode .fa-arrow-up-from-bracket {
+    background: transparent; /* No background color */
+    color: var(--text-color); /* Icon color to match light mode text color */
+}
+
+/* Ensure hover effect is still applied */
+body.light-mode .fa-arrow-up-from-bracket:hover {
+    background: var(--button-hover-color); /* Add hover effect if desired */
+}
+
 
 .chat-list .message .image{
     width: 40px;
@@ -333,6 +478,57 @@ body {
     }
 }
 
+/* Positioning and Styling for Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.theme-toggle, .delete-button {
+    background: var(--secondary-color);
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.theme-toggle:hover, .delete-button:hover {
+    background: var(--secondary-hover-color);
+}
+
+/* Icon Color for Light/Dark Mode */
+body.light-mode .theme-toggle i {
+    color: #333; /* Darker for light mode */
+}
+body.dark-mode .theme-toggle i {
+    color: #f0f0f0; /* Lighter for dark mode */
+}
+
+/* Make the icon color white */
+#themeToggleButton i,
+#deleteButton i,
+.fa-arrow-up-from-bracket {
+    color: rgba(255, 255, 255, 0.7); /* Light white */
+}
+
+/* Make the button background white with some transparency */
+#themeToggleButton,
+#deleteButton,
+.fa-arrow-up-from-bracket {
+    background-color: rgba(255, 255, 255, 0.1); /* White with transparency */
+    border-radius: 50%; /* Make buttons circular */
+    padding: 10px; /* Adjust padding as needed */
+}
+
+
 /* Responsive media query code for small screen */
 @media (max-width: 768px) {
     .header :is(.title, .subtitle) {
@@ -367,3 +563,36 @@ body {
     }
   }
 
+    /* Responsive media query code for large screen */
+  @media (min-width: 1024px) {
+    .header :is(.title, .subtitle) {
+      font-size: 3rem;
+      line-height: 3.6rem;
+    }
+  
+    .header .subtitle {
+      font-size: 2.4rem;
+    }
+  
+    .typing-area :where(.typing-form, .action-buttons) {
+      gap: 0.75rem;
+    }
+  
+    .typing-form .input-wrapper {
+      height: 56px;
+    }
+  
+    .typing-form .typing-input {
+      padding: 1.1rem 4rem 1.1rem 1.5rem;
+    }
+  
+    .typing-area .icon {
+      height: 50px;
+      width: 50px;
+    }
+  
+    .typing-area .disclaimer-text {
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+  }

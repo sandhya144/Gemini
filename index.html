@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.google.com/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-     <!-- <script src="script.js"></script> -->
 </head>
 <body>
     <!-- greetings -->
@@ -53,14 +52,14 @@
     <!-- <div class="message outgoing">
         <div class="message-content">
         <img src="https://static.vecteezy.com/system/resources/previews/007/069/364/original/3d-user-icon-in-a-minimalistic-style-user-symbol-for-your-website-design-logo-app-ui-vector.jpg" alt="user img" class="image" style="width: 40px; height: 40px">
-         <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, autem itaque sint nam, cupiditate dolores iste veritatis cumque tempora porro magnam obcaecati fuga adipisci natus, illum accusamus perspiciatis sed quaerat.
+         <p class="text">
         </p>
         </div>
     </div>
     <div class="message incoming">
         <div class="message-content">
         <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73fc4168aec8445.svg" alt="gemini img" class="image" style="width: 40px; height: 40px">
-         <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, autem itaque sint nam, cupiditate dolores iste veritatis cumque tempora porro magnam obcaecati fuga adipisci natus, illum accusamus perspiciatis sed quaerat.
+         <p class="text">
         </p>
         </div>
         <i class="copy
@@ -70,7 +69,7 @@
     <!-- <div class="message incoming loading">
         <div class="message-content">
         <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73fc4168aec8445.svg" alt="gemini img" class="image" style="width: 40px; height: 40px">
-         <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, autem itaque sint nam, cupiditate dolores iste veritatis cumque tempora porro magnam obcaecati fuga adipisci natus, illum accusamus perspiciatis sed quaerat.
+         <p class="text">
         </p>
      
         <div class="loading-indicator">
@@ -85,23 +84,24 @@
  </div>
 
   <!-- typing area -->
-   <div class="typing-area">
+  <div class="typing-area">
     <form action="#" class="typing-form">
        <div class="input-wrapper">
         <input type="text" placeholder="Enter a prompt here" class="typing-input">
-        <button class="icon3
-        fa-solid fa-arrow-up-from-bracket"></button>
-       </div>
+        <!-- Align these icons beside the input placeholder -->
+    </button>
+    <button class="icon3 fa-solid fa-arrow-up-from-bracket"></button>
 
-       <!-- <div class="action-button"> 
-        <span class="icon3
-       fas fa-sun"></span>
-       <span class="icon3
-        fa-solid fa-trash"></span>
-       </div> -->
-       
+        <button id="themeToggleButton" class="icon3 theme-toggle">
+            <!-- <i class="fas fa-moon"></i> -->
+            <i class="fas fa-sun"></i>
+        </button>
+
+        <button id="deleteButton" class="icon3 delete-button">
+            <i class="fas fa-trash-alt"></i>
+       </div>
     </form>
-   
+
     <p class="disclaimer-text"> 
         Gemini may display inaccurate info, including about people, so double-check its responses.Your privacy and Gemini Apps
     </p>
