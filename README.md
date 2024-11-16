@@ -40,9 +40,7 @@ JavaScript
 ├── 📁 HTML  
 │   └── index.html
 
-├── README.md  
-
-
+ 
 # 🚀 Getting Started
 1️⃣ Clone the Repository using this cd:
 
