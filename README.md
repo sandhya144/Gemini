@@ -24,8 +24,10 @@ JavaScript
 
 # 📸 Screenshots
 
-![Screenshot 2024-10-19 141710](https://github.com/user-attachments/assets/333437f5-949a-44b4-8ebe-a59501bacbf4)
+![Screenshot 2024-11-16 151325](https://github.com/user-attachments/assets/cb89619d-6f18-44e5-a20f-bad2c363c0a3)
 ![Screenshot 2024-11-09 123813](https://github.com/user-attachments/assets/d94fdb70-5493-46ee-9393-9f4eaf9f2957)
+![Screenshot 2024-11-16 151814](https://github.com/user-attachments/assets/ddc48f56-9077-4604-bebe-7381465f29bb)
+
 
 
 # 📂 Project Structure
@@ -35,17 +37,18 @@ JavaScript
 │   └── styles.css  
 ├── 📁 js  
 │   └── script.js  
-├── 📁 assets  
-│   └── (images, icons, etc.)  
-├── index.html  
+├── 📁 HTML  
+│   └── index.html 
 └── README.md  
 
 
 # 🚀 Getting Started
 1️⃣ Clone the Repository using this cd:
+
   git clone https://github.com/your-username/google-gemini-themed-webpage.git  
   
 2️⃣ Navigate to the Directory using this cd:
+
   google-gemini-themed-webpage 
   
 3️⃣ Open the Project:
@@ -60,6 +63,7 @@ JavaScript
 Obtain the API key or access credentials from the Google Gemini API Documentation.
 
 Replace the placeholder key in script.js with your actual API key:
+
 const apiKey = "your-API-key"; 
 
 
@@ -68,11 +72,11 @@ Contributions are always welcome!
 
 
 # Fork the repository.
-Create a new branch: git checkout -b feature-name.
+Create a new branch:  git checkout -b feature-name.
 
-Make changes and commit: git commit -m "Added a new feature".
+Make changes and commit:  git commit -m "Added a new feature".
 
-Push changes: git push origin feature-name.
+Push changes:  git push origin feature-name.
 
 Submit a Pull Request.
 
