@@ -38,8 +38,8 @@ JavaScript
 ├── 📁 js  
 │   └── script.js  
 ├── 📁 HTML  
-│   └── index.html 
-└── README.md  
+│   └── index.html
+├── README.md  
 
 
 # 🚀 Getting Started
