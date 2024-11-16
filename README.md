@@ -1,6 +1,7 @@
 # Google Gemini-Themed Webpage 🌟
 A fully functional webpage themed around Google Gemini, featuring dark and light mode toggles, a sleek user interface, and integrated Gemini API for dynamic functionality.
 
+
 # 🚀 Features
 Gemini API Integration: Seamlessly fetch and display data.
 
@@ -12,6 +13,7 @@ Copy, Paste, and Delete Functionalities: Smooth handling of text inputs and acti
 
 Responsive Design: Fully optimized for various screen sizes and devices.
 
+
 # 🔧 Tech Stack
 HTML5
 
@@ -19,7 +21,12 @@ CSS3
 
 JavaScript
 
+
 # 📸 Screenshots
+
+![Screenshot 2024-10-19 141710](https://github.com/user-attachments/assets/333437f5-949a-44b4-8ebe-a59501bacbf4)
+![Screenshot 2024-11-09 123813](https://github.com/user-attachments/assets/d94fdb70-5493-46ee-9393-9f4eaf9f2957)
+
 
 # 📂 Project Structure
 📁 Google-Gemini-Project  
@@ -33,6 +40,7 @@ JavaScript
 ├── index.html  
 └── README.md  
 
+
 # 🚀 Getting Started
 1️⃣ Clone the Repository using this cd:
   git clone https://github.com/your-username/google-gemini-themed-webpage.git  
@@ -43,8 +51,10 @@ JavaScript
 3️⃣ Open the Project:
   Open the index.html file in your preferred browser.
 
+
 # 🌐 Live Demo
  https://google-gemini-delta-six.vercel.app/
+
 
 # 🛠️ API Setup
 Obtain the API key or access credentials from the Google Gemini API Documentation.
@@ -52,8 +62,10 @@ Obtain the API key or access credentials from the Google Gemini API Documentatio
 Replace the placeholder key in script.js with your actual API key:
 const apiKey = "your-API-key"; 
 
+
 # 🤝 Contributing
 Contributions are always welcome!
+
 
 # Fork the repository.
 Create a new branch: git checkout -b feature-name.
@@ -64,12 +76,16 @@ Push changes: git push origin feature-name.
 
 Submit a Pull Request.
 
+
 # 📝 License
 This project is licensed under the MIT License.
+
 
 # 📧 Contact
 Feel free to reach out with suggestions or feedback!
 Email: sndy6363@gmail.com
+
 GitHub: sandhya144
+
 
 # Let me know if you'd like to tweak anything further! 😊
